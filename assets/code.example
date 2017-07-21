@@ -1,4 +1,4 @@
-const fastify = require('fastify')
+const fastify = require('fastify')()
 
 fastify.get('/', (req, reply) => {
   reply.send({ hello: 'world' })
