@@ -17,7 +17,7 @@
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "spectacle": "^2.1.0",
-    "spectacle-code-slide": "^0.4.0",
+    "spectacle-code-slide": "https://github.com/delvedor/spectacle-code-slide.git#width-props-build",
     "spectacle-terminal": "^0.3.0"
   },
   "devDependencies": {
