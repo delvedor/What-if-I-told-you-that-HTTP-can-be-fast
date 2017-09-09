@@ -7,6 +7,9 @@
   "plugins": [
     "transform-decorators-legacy",
   ],
+  "ignore": [
+    "./code/*"
+  ],
   "env": {
     "production": {
       "plugins": [
