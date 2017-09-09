@@ -1,3 +1,5 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+
 // Import React
 import React from 'react'
 
@@ -22,6 +24,7 @@ import {
 import CodeSlide from 'spectacle-code-slide'
 // Import Terminal formatter
 // import Terminal from 'spectacle-terminal'
+import ImageSlide from 'spectacle-image-slide'
 
 // Import image preloader util
 import preloader from 'spectacle/lib/utils/preloader'
@@ -51,7 +54,15 @@ const images = {
   router: require('../assets/router.png'),
   json: require('../assets/json.png'),
   helmet: require('../assets/helmet.png'),
-  eventLoop: require('../assets/event-loop.png')
+  eventLoop: require('../assets/event-loop.png'),
+  borderCheck: require('../assets/queue-validation.jpg'),
+  validationSpeed: require('../assets/validation-speed.png'),
+  validationCorrectness: require('../assets/validation-correctness.png'),
+  routing: require('../assets/routing.jpg'),
+  dag: require('../assets/dag.png'),
+  dagServices: require('../assets/dag-services.png'),
+  tooling: require('../assets/tooling.jpg'),
+  architecture: require('../assets/architecture.jpg')
 }
 
 preloader(images)
@@ -75,7 +86,7 @@ export default class Presentation extends React.Component {
         <Slide transition={['slide']} bgImage={images.rocket}>
           <Heading size={1} caps textColor='primary'>{'What if I told you that HTTP can be fast?'}</Heading>
           <Text size={6} margin={'150px 0 0 0'}>
-            <Link href='https://github.com/delvedor' target='_blank' textColor='secondary'>@delvedor</Link>
+            <Link href='https://github.com/delvedor' target='_blank' textColor='primary'>@delvedor</Link>
           </Text>
         </Slide>
 
@@ -88,43 +99,43 @@ export default class Presentation extends React.Component {
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../assets/node-server.example')}
+          code={require('raw-loader!../code/node-server.js')}
           ranges={[
-            { loc: [0, 10], title: 'Node Plain Server' }
+            { loc: [0, 10], title: 'Node Core' }
           ]}
         />
 
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../assets/express.example')}
+          code={require('raw-loader!../code/express.js')}
           ranges={[
-            { loc: [0, 9], title: 'Express Server' }
+            { loc: [0, 9], title: 'Express' }
           ]}
         />
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.nodeExpress} width={750} />
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.nodeExpress} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='secondary'>
+        <Slide transition={['slide']} bgImage={images.tooling} bgDarken={0.6}>
           <Heading caps textColor='primary'>{'Let me introduce you some tooling'}</Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Image src={images.zerox} width={1000} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.zeroxDemo} width={1400} />
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.zeroxDemo} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.autocannon} width={1300} />
+        <Slide transition={['slide']} bgColor='primary'>
+          <Image src={images.autocannon} width={1000} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.autocannonDemo} width={1000} />
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.autocannonDemo} />
         </Slide>
 
         {/* <Slide transition={['slide']} bgColor='tertiary'>
@@ -166,29 +177,29 @@ export default class Presentation extends React.Component {
           />
         </Slide> */}
 
-        <Slide transition={['slide']} bgColor='quartenary' align='center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.flamegraphExpress} width={window.innerWidth - 100} />
+        <Slide transition={['slide']} bgColor='quartenary'>
+          <ImageSlide image={images.flamegraphExpress} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='quartenary' align='center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.flamegraphNode} width={window.innerWidth - 100} />
+        <Slide transition={['slide']} bgColor='quartenary'>
+          <ImageSlide image={images.flamegraphNode} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='tertiary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.fastifyWhiteVertical} height={window.innerHeight - 200} />
+          <ImageSlide image={images.fastifyWhiteVertical} />
         </Slide>
 
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../assets/code.example')}
+          code={require('raw-loader!../code/code.js')}
           ranges={[
             { loc: [0, 10], title: 'Fastify Server' }
           ]}
         />
 
         <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.nodeExpressFastify} width={900} />
+          <ImageSlide image={images.nodeExpressFastify} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
@@ -241,7 +252,7 @@ export default class Presentation extends React.Component {
               <TableRow>
                 <TableItem textSize={40} padding={tablePadding}>Logging</TableItem>
                 <TableItem textSize={40} padding={tablePadding}>❌</TableItem>
-                <TableItem textSize={40} padding={tablePadding}>❌</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
                 <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
               </TableRow>
               <TableRow>
@@ -258,14 +269,14 @@ export default class Presentation extends React.Component {
           <Heading caps textColor='primary'>{'How can Fastify be so fast?'}</Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Image src={images.buildRun} width={window.innerWidth - 450} />
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.buildRun} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
           <Heading size={6} textColor='secondary'>{'Serialization'}</Heading>
           <Text textSize={40}><Link href='https://github.com/fastify/fast-json-stringify'>fast-json-stringify</Link></Text>
-          <Image src={images.json} fit />
+          <Image src={images.json} fit margin={'50px 0 0 0'} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
@@ -280,27 +291,76 @@ export default class Presentation extends React.Component {
           transition={['slide']}
           lang='js'
           width={1000}
-          code={require('raw-loader!../assets/json.example')}
+          code={require('raw-loader!../code/json.js')}
           ranges={[
-            { loc: [0, 17], title: 'Example' },
+            { loc: [0, 17], title: 'fast-json-stringify' },
             { loc: [0, 1], note: 'Require the library' },
-            { loc: [3, 10], note: 'Schema definition' },
-            { loc: [3, 4], note: 'Declare the type' },
-            { loc: [4, 9], note: 'Object properties' },
+            { loc: [2, 10], note: 'Schema definition' },
             { loc: [11, 16], note: 'Stringify the object' }
           ]}
         />
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Heading size={6} textColor='secondary'>{'Routing'}</Heading>
-          <Text textSize={40}><Link href='https://github.com/delvedor/find-my-way'>find-my-way</Link></Text>
-          <Image src={images.router} fit style={{ maxHeight: window.innerHeight - 300 }} />
+        <CodeSlide
+          transition={['slide']}
+          lang='js'
+          code={require('raw-loader!../code/fastify-serialization.js')}
+          ranges={[
+            { loc: [0, 1], title: 'Serialization' },
+            { loc: [2, 14], note: 'declare the schema inside the route options' },
+            { loc: [15, 18], note: 'declare the route with the options above' }
+          ]}
+        />
+
+        <Slide transition={['slide']} bgImage={images.borderCheck} bgDarken={0.6}>
+          <Heading size={3} caps textColor='primary'>{'Data Validation'}</Heading>
         </Slide>
 
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../assets/closures.example')}
+          code={require('raw-loader!../code/fastify-validation.js')}
+          ranges={[
+            { loc: [0, 1], title: 'Validation' },
+            { loc: [2, 13], note: 'declare the schema inside the route options' },
+            { loc: [14, 17], note: 'declare the route with the options above' }
+          ]}
+        />
+
+        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Heading size={6} textColor='secondary'>{'Validation speeed'}</Heading>
+          <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
+          <Image src={images.validationSpeed} fit margin={'50px 0 0 0'} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Heading size={6} textColor='secondary'>{'Validation correctness'}</Heading>
+          <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
+          <Image src={images.validationCorrectness} fit margin={'50px 0 0 0'} />
+        </Slide>
+
+        <Slide transition={['slide']} bgImage={images.routing} bgDarken={0.6}>
+          <Heading size={3} caps textColor='primary'>{'Routing'}</Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Heading size={6} textColor='secondary'>{'find-my-way'}</Heading>
+          <Text textSize={40}><Link href='https://github.com/delvedor/find-my-way'>delvedor/find-my-way</Link></Text>
+          <Appear><Text textSize={40} padding={tablePadding}>No closures</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>No regular expressions</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>Radix-tree based</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>Safe</Text></Appear>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Link href='https://github.com/delvedor/router-benchmark'>
+            <ImageSlide image={images.router} />
+          </Link>
+        </Slide>
+
+        <CodeSlide
+          transition={['slide']}
+          lang='js'
+          code={require('raw-loader!../code/closures.js')}
           ranges={[
             { loc: [0, 10], title: 'The problem with closures' },
             { loc: [2, 5], note: 'This function is short-lived and hard to optimize' },
@@ -311,7 +371,7 @@ export default class Presentation extends React.Component {
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../assets/no-closures.example')}
+          code={require('raw-loader!../code/no-closures.js')}
           ranges={[
             { loc: [0, 12], title: 'Avoid nested closures' },
             { loc: [1, 4], note: 'bigdata exits scope here' },
@@ -323,12 +383,12 @@ export default class Presentation extends React.Component {
           <Heading size={3} caps textColor='secondary'>{'Fastify has not closures at all!'}</Heading>
           <Appear>
             <Text margin={'40px 0 0 0'}>
-              <Link href='https://github.com/mcollina/reusify' target='_blank' textColor='secondary'>https://github.com/mcollina/reusify</Link>
+              <Link href='https://github.com/mcollina/reusify' target='_blank' textColor='secondary'>{'https://github.com/mcollina/reusify'}</Link>
             </Text>
           </Appear>
           <Appear>
             <Text margin={'15px 0 0 0'}>
-              <Link href='https://github.com/fastify/middie' target='_blank' textColor='secondary'>https://github.com/fastify/middie</Link>
+              <Link href='https://github.com/fastify/middie' target='_blank' textColor='secondary'>{'https://github.com/fastify/middie'}</Link>
             </Text>
           </Appear>
         </Slide>
@@ -340,16 +400,46 @@ export default class Presentation extends React.Component {
           <Text textSize={30}>Helmet comparison</Text>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary'>
-          <Heading size={3} caps textColor='secondary'>{'Validation'}</Heading>
-        </Slide>
-
-        <Slide transition={['slide']} bgColor='primary'>
-          <Heading size={3} caps textColor='secondary'>{'Architecture'}</Heading>
+        <Slide transition={['slide']} bgImage={images.architecture} bgDarken={0.6}>
+          <Heading size={3} caps textColor='primary'>{'Architecture'}</Heading>
           {/* plugins, encapsulation, separation of concerns, decorators, microservices */}
         </Slide>
 
-        <Slide transition={['zoom']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <CodeSlide
+          transition={['slide']}
+          lang='js'
+          code={require('raw-loader!../code/register.js')}
+          ranges={[
+            { loc: [0, 6], title: 'Register a plugin' }
+          ]}
+        />
+
+        <CodeSlide
+          transition={['slide']}
+          lang='js'
+          code={require('raw-loader!../code/plugin.js')}
+          ranges={[
+            { loc: [0, 12], title: 'Plugin' }
+          ]}
+        />
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.dag} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <ImageSlide image={images.dagServices} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Text>DEMO!</Text>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+          <Text>Thanks</Text>
+        </Slide>
+
+        {/* <Slide transition={['zoom']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
           <Image src={images.eventLoop} width={900} />
           <Text textSize={60} margin='20px 0 30px 0'>Fast means more I/O</Text>
 
@@ -357,7 +447,7 @@ export default class Presentation extends React.Component {
           <Appear><Text textSize={40}>Process the event</Text></Appear>
           <Appear><Text textSize={40}>Release the CPU</Text></Appear>
           <Appear><Text textSize={40} bold>As fast as possible</Text></Appear>
-        </Slide>
+        </Slide> */}
       </Deck>
     )
   }
