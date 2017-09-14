@@ -63,7 +63,9 @@ const images = {
   dagServices: require('../assets/dag-services.png'),
   tooling: require('../assets/tooling.jpg'),
   architecture: require('../assets/architecture.jpg'),
-  serialization: require('../assets/serialization.jpg')
+  serialization: require('../assets/serialization.jpg'),
+  thanks: require('../assets/thanks.jpg'),
+  fastifyBackground: require('../assets/fastify-background.jpg')
 }
 
 preloader(images)
@@ -141,7 +143,7 @@ export default class Presentation extends React.Component {
           <ImageSlide image={images.flamegraphNode} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='tertiary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgImage={images.fastifyBackground} bgDarken={0.8}>
           <ImageSlide image={images.fastifyWhiteVertical} />
         </Slide>
 
@@ -242,10 +244,6 @@ export default class Presentation extends React.Component {
           <Appear><Text textSize={40} padding={tablePadding}>Not type specific</Text></Appear>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <ImageSlide image={images.json} />
-        </Slide>
-
         {/* <CodeSlide
           transition={['slide']}
           lang='js'
@@ -270,6 +268,10 @@ export default class Presentation extends React.Component {
           ]}
         />
 
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.json} />
+        </Slide>
+
         <Slide transition={['slide']} bgImage={images.borderCheck} bgDarken={0.6}>
           <Heading size={3} caps textColor='primary'>{'Data Validation'}</Heading>
         </Slide>
@@ -285,23 +287,23 @@ export default class Presentation extends React.Component {
           ]}
         />
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Heading size={6} textColor='secondary'>{'Validation speeed'}</Heading>
           <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
-          <Image src={images.validationSpeed} fit margin={'50px 0 0 0'} />
+          <Image src={images.validationSpeed} fit margin={'50px 0 0 0'} height={window.innerHeight / 2} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Heading size={6} textColor='secondary'>{'Validation correctness'}</Heading>
           <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
-          <Image src={images.validationCorrectness} fit margin={'50px 0 0 0'} />
+          <Image src={images.validationCorrectness} fit margin={'50px 0 0 0'} height={window.innerHeight / 2} />
         </Slide>
 
         <Slide transition={['slide']} bgImage={images.routing} bgDarken={0.6}>
           <Heading size={3} caps textColor='primary'>{'Routing'}</Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Heading size={6} textColor='secondary'>{'find-my-way'}</Heading>
           <Text textSize={40}><Link href='https://github.com/delvedor/find-my-way'>delvedor/find-my-way</Link></Text>
           <Appear><Text textSize={40} padding={tablePadding}>No closures</Text></Appear>
@@ -310,7 +312,7 @@ export default class Presentation extends React.Component {
           <Appear><Text textSize={40} padding={tablePadding}>Safe</Text></Appear>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Link href='https://github.com/delvedor/router-benchmark'>
             <ImageSlide image={images.router} />
           </Link>
@@ -342,12 +344,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} caps textColor='secondary'>{'Fastify has not closures at all!'}</Heading>
           <Appear>
             <Text margin={'40px 0 0 0'}>
-              <Link href='https://github.com/mcollina/reusify' target='_blank' textColor='secondary'>{'https://github.com/mcollina/reusify'}</Link>
-            </Text>
-          </Appear>
-          <Appear>
-            <Text margin={'15px 0 0 0'}>
-              <Link href='https://github.com/fastify/middie' target='_blank' textColor='secondary'>{'https://github.com/fastify/middie'}</Link>
+              <Link href='https://github.com/mcollina/reusify' target='_blank'>{'mcollina/reusify'}</Link>
             </Text>
           </Appear>
         </Slide>
@@ -394,7 +391,7 @@ export default class Presentation extends React.Component {
           <Text>DEMO!</Text>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='tertiary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgImage={images.fastifyBackground} bgDarken={0.8}>
           <ImageSlide image={images.fastifyWhiteVertical} />
         </Slide>
 
@@ -404,8 +401,8 @@ export default class Presentation extends React.Component {
           </Link>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
-          <Text>Thanks</Text>
+        <Slide transition={['slide']} bgImage={images.thanks} bgDarken={0.6}>
+          <Heading size={3} caps textColor='primary'>{'Thanks'}</Heading>
         </Slide>
 
         {/* <Slide transition={['zoom']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
