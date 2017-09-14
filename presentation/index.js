@@ -156,11 +156,11 @@ export default class Presentation extends React.Component {
           ]}
         />
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.nodeExpressFastify} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary' align='center flex-start'>
           <Table>
             <TableHeader>
               <TableRow>
@@ -235,7 +235,7 @@ export default class Presentation extends React.Component {
           <Heading size={3} caps textColor='primary'>{'Serialization'}</Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Text textSize={40} margin='0 0 50px 0'><Link href='https://github.com/fastify/fast-json-stringify'>fastify/fast-json-stringify</Link></Text>
           <Heading size={6} textColor='secondary'>{'Why not JSON.stringify?'}</Heading>
           <Appear><Text textSize={40} padding={tablePadding}>Recursive function</Text></Appear>
@@ -383,11 +383,11 @@ export default class Presentation extends React.Component {
           <ImageSlide image={images.dag} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.dagServices} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary' align='flex-start center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
+        <Slide transition={['slide']} bgColor='primary'>
           <Text>DEMO!</Text>
         </Slide>
 
