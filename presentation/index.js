@@ -401,6 +401,16 @@ export default class Presentation extends React.Component {
           </Link>
         </Slide>
 
+        <Slide transition={['slide']} bgColor='primary'>
+          <Heading size={3}>{'This presentation'}</Heading>
+          <Text margin={'80px 0 0 0'} fit>
+            <Link href='https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
+          </Text>
+          <Text margin={'40px 0 0 0'} fit>
+            <Link href='https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
+          </Text>
+        </Slide>
+
         <Slide transition={['slide']} bgImage={images.thanks} bgDarken={0.6}>
           <Heading size={3} caps textColor='primary'>{'Thanks'}</Heading>
         </Slide>
