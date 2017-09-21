@@ -1,0 +1,19 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tomas Della Vedova - @delvedor (http://delved.org)",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^0.28.2",
+    "fastify-leveldb": "^0.1.0",
+    "handlebars": "^4.0.10",
+    "point-of-view": "^0.2.2"
+  }
+}
