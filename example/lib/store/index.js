@@ -3,8 +3,7 @@
 function store (fastify, opts, next) {
   fastify.register(
     require('fastify-leveldb'),
-    { name: 'db' },
-    err => { if (err) throw err }
+    { name: 'db' }
   )
 
   fastify.get('/:key', {

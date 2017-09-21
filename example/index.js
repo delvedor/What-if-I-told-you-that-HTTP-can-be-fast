@@ -7,16 +7,15 @@ fastify.get('/status', (req, reply) => {
 })
 
 fastify.register(
-  require('./plugins/store'),
+  require('./lib/store'),
   { prefix: '/store' }
 )
 
 fastify.register(
-  require('./plugins/generator'),
+  require('./lib/generator'),
   { prefix: '/generator' }
 )
 
-fastify.listen(8000, err => {
-  if (err) throw err
+fastify.listen(8000, () => {
   console.log('Listening on http://localhost:8000')
 })
