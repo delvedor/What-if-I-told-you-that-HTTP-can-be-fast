@@ -45,6 +45,7 @@ const images = {
   autocannonDemo: require('../assets/autocannon-demo.gif'),
   flamegraphExpress: require('../assets/flamegraph-express.png'),
   flamegraphNode: require('../assets/flamegraph-node.png'),
+  flamegraphFastify: require('../assets/flamegraph-fastify.png'),
   fastifyWhiteHorizontal: require('../assets/fastify-white-landscape.png'),
   fastifyWhiteVertical: require('../assets/fastify-white-portrait.png'),
   nodeExpressFastify: require('../assets/node-expess-fastify.png'),
@@ -96,18 +97,18 @@ export default class Presentation extends React.Component {
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../code/node-server.js')}
+          code={require('raw-loader!../code/express.js')}
           ranges={[
-            { loc: [0, 10], title: 'Node Core' }
+            { loc: [0, 9], title: 'Express' }
           ]}
         />
 
         <CodeSlide
           transition={['slide']}
           lang='js'
-          code={require('raw-loader!../code/express.js')}
+          code={require('raw-loader!../code/node-server.js')}
           ranges={[
-            { loc: [0, 9], title: 'Express' }
+            { loc: [0, 10], title: 'Node Core' }
           ]}
         />
 
@@ -144,7 +145,9 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgImage={images.fastifyBackground} bgDarken={0.8}>
-          <ImageSlide image={images.fastifyWhiteVertical} />
+          <Link href='https://github.com/fastify/fastify' target='_blank' textColor='secondary'>
+            <ImageSlide image={images.fastifyWhiteVertical} />
+          </Link>
         </Slide>
 
         <CodeSlide
@@ -155,6 +158,10 @@ export default class Presentation extends React.Component {
             { loc: [0, 10], title: 'Fastify Server' }
           ]}
         />
+
+        <Slide transition={['slide']} bgColor='quartenary'>
+          <ImageSlide image={images.flamegraphFastify} />
+        </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.nodeExpressFastify} />
@@ -214,6 +221,12 @@ export default class Presentation extends React.Component {
                 <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
               </TableRow>
               <TableRow>
+                <TableItem textSize={40} padding={tablePadding}>Async/Await</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>❌</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
+              </TableRow>
+              <TableRow>
                 <TableItem textSize={40} padding={tablePadding}>req/sec</TableItem>
                 <TableItem textSize={40} textColor='red' padding={tablePadding}>18,740</TableItem>
                 <TableItem textSize={40} textColor='red' padding={tablePadding}>4,226</TableItem>
@@ -236,12 +249,18 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
-          <Text textSize={40} margin='0 0 50px 0'><Link href='https://github.com/fastify/fast-json-stringify'>fastify/fast-json-stringify</Link></Text>
           <Heading size={6} textColor='secondary'>{'Why not JSON.stringify?'}</Heading>
           <Appear><Text textSize={40} padding={tablePadding}>Recursive function</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>It cannot be optimized by V8</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>Generic code</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>Not type specific</Text></Appear>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <Text textSize={60} margin='0 0 50px 0'><Link href='https://github.com/fastify/fast-json-stringify'>fastify/fast-json-stringify</Link></Text>
+          <Appear><Text textSize={40} padding={tablePadding}>Schema based JSON rendering</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>Code generation</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>Prevents leaking informations</Text></Appear>
         </Slide>
 
         {/* <CodeSlide
@@ -324,7 +343,7 @@ export default class Presentation extends React.Component {
           code={require('raw-loader!../code/closures.js')}
           ranges={[
             { loc: [0, 10], title: 'The problem with closures' },
-            { loc: [2, 5], note: 'This function is short-lived and hard to optimize' },
+            { loc: [2, 5], note: 'The callback is short-lived and hard to optimize' },
             { loc: [1, 6], note: 'bigdata is still in scope!' }
           ]}
         />
@@ -336,7 +355,7 @@ export default class Presentation extends React.Component {
           ranges={[
             { loc: [0, 12], title: 'Avoid nested closures' },
             { loc: [1, 4], note: 'bigdata exits scope here' },
-            { loc: [7, 10], note: 'this function can be optimized!' }
+            { loc: [7, 10], note: 'the callback can be optimized!' }
           ]}
         />
 
@@ -392,12 +411,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgImage={images.fastifyBackground} bgDarken={0.8}>
-          <ImageSlide image={images.fastifyWhiteVertical} />
+          <Link href='https://github.com/fastify/fastify' target='_blank' textColor='secondary'>
+            <ImageSlide image={images.fastifyWhiteVertical} />
+          </Link>
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
           <Link href='http://www.letzdoitapp.com/' target='_blank' textColor='secondary'>
-            <Image src={images.letzdoit} width={600} />
+            <Image src={images.letzdoit} width={700} />
           </Link>
         </Slide>
 
@@ -412,7 +433,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgImage={images.thanks} bgDarken={0.6}>
-          <Heading size={3} caps textColor='primary'>{'Thanks'}</Heading>
+          <Heading size={3} caps textColor='primary'>{'Thanks!'}</Heading>
         </Slide>
 
         {/* <Slide transition={['zoom']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
