@@ -9,12 +9,14 @@ function generator (fastify, opts, next) {
   })
 
   fastify.get('/', {
-    querystring: {
-      type: 'object',
-      properties: {
-        text: { type: 'string' }
-      },
-      required: ['text']
+    schema: {
+      querystring: {
+        type: 'object',
+        properties: {
+          text: { type: 'string' }
+        },
+        required: ['text']
+      }
     }
   }, (req, reply) => {
     reply.view('/index.html', { text: req.query.text })
