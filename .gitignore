@@ -62,3 +62,6 @@ typings/
 
 # vim swap files
 *.swp
+
+# db example
+/example/db
