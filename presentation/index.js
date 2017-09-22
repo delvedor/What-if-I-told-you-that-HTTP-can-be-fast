@@ -90,7 +90,7 @@ export default class Presentation extends React.Component {
         <Slide transition={['slide']} bgImage={images.rocket}>
           <Heading size={1} caps textColor='primary'>{'What if I told you that HTTP can be fast?'}</Heading>
           <Text size={6} margin={'150px 0 0 0'}>
-            <Link href='https://github.com/delvedor' target='_blank' textColor='primary'>@delvedor</Link>
+            <Link href='https://twitter.com/delvedor' target='_blank' textColor='primary'>By @delvedor</Link>
           </Text>
         </Slide>
 
@@ -434,6 +434,9 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['slide']} bgImage={images.thanks} bgDarken={0.6}>
           <Heading size={3} caps textColor='primary'>{'Thanks!'}</Heading>
+          <Text textSize={25} margin={'150px 0 0 0'}>
+            <Link href='https://twitter.com/delvedor' target='_blank' textColor='primary'>@delvedor on Twitter</Link>
+          </Text>
         </Slide>
 
         {/* <Slide transition={['zoom']} bgColor='primary' align='center center' maxHeight={window.innerHeight} maxWidth={window.innerWidth}>
