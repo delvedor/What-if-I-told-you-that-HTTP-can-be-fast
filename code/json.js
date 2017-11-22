@@ -1,6 +1,6 @@
-const fastJson = require('fast-json-stringify')
+const FJS = require('fast-json-stringify')
 
-const stringify = fastJson({
+const stringify = FJS({
   type: 'object',
   properties: {
     firstName: { type: 'string' },
