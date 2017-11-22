@@ -66,7 +66,9 @@ const images = {
   architecture: require('../assets/architecture.jpg'),
   serialization: require('../assets/serialization.jpg'),
   thanks: require('../assets/thanks.jpg'),
-  fastifyBackground: require('../assets/fastify-background.jpg')
+  fastifyBackground: require('../assets/fastify-background.jpg'),
+  radixTree: require('../assets/radix-tree.png'),
+  radixTreeRouter: require('../assets/radix-tree.gif')
 }
 
 preloader(images)
@@ -121,6 +123,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
+          <Image src={images.autocannon} width={1000} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.autocannonDemo} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
           <Image src={images.zerox} width={1000} />
         </Slide>
 
@@ -129,18 +139,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
-          <Image src={images.autocannon} width={1000} />
-        </Slide>
-
-        <Slide transition={['slide']} bgColor='primary'>
-          <ImageSlide image={images.autocannonDemo} />
-        </Slide>
-
-        <Slide transition={['slide']} bgColor='quartenary'>
           <ImageSlide image={images.flamegraphExpress} />
         </Slide>
 
-        <Slide transition={['slide']} bgColor='quartenary'>
+        <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.flamegraphNode} />
         </Slide>
 
@@ -159,7 +161,7 @@ export default class Presentation extends React.Component {
           ]}
         />
 
-        <Slide transition={['slide']} bgColor='quartenary'>
+        <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.flamegraphFastify} />
         </Slide>
 
@@ -227,10 +229,16 @@ export default class Presentation extends React.Component {
                 <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
               </TableRow>
               <TableRow>
+                <TableItem textSize={40} padding={tablePadding}>HTTP2</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>❌</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
+                <TableItem textSize={40} padding={tablePadding}>✅</TableItem>
+              </TableRow>
+              <TableRow>
                 <TableItem textSize={40} padding={tablePadding}>req/sec</TableItem>
-                <TableItem textSize={40} textColor='red' padding={tablePadding}>18,740</TableItem>
-                <TableItem textSize={40} textColor='red' padding={tablePadding}>4,226</TableItem>
-                <TableItem textSize={40} textColor='green' padding={tablePadding}>29,340</TableItem>
+                <TableItem textSize={40} textColor='red' padding={tablePadding}>22,006</TableItem>
+                <TableItem textSize={40} textColor='red' padding={tablePadding}>20,816</TableItem>
+                <TableItem textSize={40} textColor='green' padding={tablePadding}>34,389</TableItem>
               </TableRow>
             </TableBody>
           </Table>
@@ -257,31 +265,30 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
-          <Text textSize={60} margin='0 0 50px 0'><Link href='https://github.com/fastify/fast-json-stringify'>fastify/fast-json-stringify</Link></Text>
+          <Text textSize={60} margin='0 0 50px 0'><Link textColor='tertiary' href='https://github.com/fastify/fast-json-stringify'>fast-json-stringify</Link></Text>
           <Appear><Text textSize={40} padding={tablePadding}>Schema based JSON rendering</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>Code generation</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>Prevents leaking informations</Text></Appear>
         </Slide>
 
-        {/* <CodeSlide
+        <CodeSlide
           transition={['slide']}
           lang='js'
           width={1000}
           code={require('raw-loader!../code/json.js')}
           ranges={[
-            { loc: [0, 17], title: 'fast-json-stringify' },
-            { loc: [0, 1], note: 'Require the library' },
+            { loc: [0, 1], title: 'fast-json-stringify' },
             { loc: [2, 10], note: 'Schema definition' },
             { loc: [11, 16], note: 'Stringify the object' }
           ]}
-        /> */}
+        />
 
         <CodeSlide
           transition={['slide']}
           lang='js'
           code={require('raw-loader!../code/fastify-serialization.js')}
           ranges={[
-            { loc: [0, 1], title: 'Serialization' },
+            { loc: [0, 1], title: 'Serialization in Fastify' },
             { loc: [2, 14], note: 'declare the schema inside the route options' },
             { loc: [15, 18], note: 'declare the route with the options above' }
           ]}
@@ -298,9 +305,21 @@ export default class Presentation extends React.Component {
         <CodeSlide
           transition={['slide']}
           lang='js'
+          width={1000}
+          code={require('raw-loader!../code/ajv.js')}
+          ranges={[
+            { loc: [0, 2], title: 'ajv' },
+            { loc: [3, 10], note: 'Schema definition' },
+            { loc: [11, 12], note: 'Vaidate the object' }
+          ]}
+        />
+
+        <CodeSlide
+          transition={['slide']}
+          lang='js'
           code={require('raw-loader!../code/fastify-validation.js')}
           ranges={[
-            { loc: [0, 1], title: 'Validation' },
+            { loc: [0, 1], title: 'Validation in Fastify' },
             { loc: [2, 13], note: 'declare the schema inside the route options' },
             { loc: [14, 17], note: 'declare the route with the options above' }
           ]}
@@ -308,13 +327,13 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['slide']} bgColor='primary'>
           <Heading size={6} textColor='secondary'>{'Validation speeed'}</Heading>
-          <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
+          <Text textSize={35}><Link textColor='tertiary' href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
           <Image src={images.validationSpeed} fit margin={'50px 0 0 0'} height={window.innerHeight / 2} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
           <Heading size={6} textColor='secondary'>{'Validation correctness'}</Heading>
-          <Text textSize={35}><Link href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
+          <Text textSize={35}><Link textColor='tertiary' href='https://github.com/ebdrup/json-schema-benchmark'>ebdrup/json-schema-benchmark</Link></Text>
           <Image src={images.validationCorrectness} fit margin={'50px 0 0 0'} height={window.innerHeight / 2} />
         </Slide>
 
@@ -323,12 +342,19 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
-          <Heading size={6} textColor='secondary'>{'find-my-way'}</Heading>
-          <Text textSize={40}><Link href='https://github.com/delvedor/find-my-way'>delvedor/find-my-way</Link></Text>
+          <Text textSize={60}><Link textColor='tertiary' href='https://github.com/delvedor/find-my-way'>find-my-way</Link></Text>
           <Appear><Text textSize={40} padding={tablePadding}>No closures</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>No regular expressions</Text></Appear>
-          <Appear><Text textSize={40} padding={tablePadding}>Radix-tree based</Text></Appear>
           <Appear><Text textSize={40} padding={tablePadding}>Safe</Text></Appear>
+          <Appear><Text textSize={40} padding={tablePadding}>Radix-tree based</Text></Appear>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.radixTree} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.radixTreeRouter} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
@@ -363,7 +389,12 @@ export default class Presentation extends React.Component {
           <Heading size={3} caps textColor='secondary'>{'Fastify has not closures at all!'}</Heading>
           <Appear>
             <Text margin={'40px 0 0 0'}>
-              <Link href='https://github.com/mcollina/reusify' target='_blank'>{'mcollina/reusify'}</Link>
+              <Link textColor='tertiary' href='https://github.com/mcollina/reusify' target='_blank'>{'mcollina/reusify'}</Link>
+            </Text>
+          </Appear>
+          <Appear>
+            <Text margin={'40px 0 0 0'}>
+              <Link textColor='tertiary' href='https://github.com/delvedor/fast-iterator' target='_blank'>{'delvedor/fast-iterator'}</Link>
             </Text>
           </Appear>
         </Slide>
@@ -425,10 +456,10 @@ export default class Presentation extends React.Component {
         <Slide transition={['slide']} bgColor='primary'>
           <Heading size={3}>{'This presentation'}</Heading>
           <Text margin={'80px 0 0 0'} fit>
-            <Link href='https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
+            <Link textColor='tertiary' href='https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://delvedor.github.io/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
           </Text>
           <Text margin={'40px 0 0 0'} fit>
-            <Link href='https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
+            <Link textColor='tertiary' href='https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast' target='_blank'>{'https://github.com/delvedor/What-if-I-told-you-that-HTTP-can-be-fast'}</Link>
           </Text>
         </Slide>
 
