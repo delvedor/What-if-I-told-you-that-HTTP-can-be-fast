@@ -12,5 +12,5 @@ const stringify = FJS({
 console.log(stringify({
   firstName: 'Tomas',
   lastName: 'Della Vedova',
-  age: 24
+  age: 25
 }))
