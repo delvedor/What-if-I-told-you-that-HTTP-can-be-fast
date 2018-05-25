@@ -4,16 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "fastify start app.js",
+    "clean": "rm -rf ./db",
+    "test": "standard && tap test/*.test.js test/*/*.test.js test/*/*/*.test.js",
+    "dev": "fastify start -l info -P --port 8000 app.js",
+    "lint": "standard --fix"
   },
   "keywords": [],
   "author": "Tomas Della Vedova - @delvedor (http://delved.org)",
   "license": "MIT",
   "dependencies": {
-    "fastify": "^0.35.1",
-    "fastify-leveldb": "^0.2.0",
+    "fastify": "^1.5.0",
+    "fastify-leveldb": "^0.3.0",
     "handlebars": "^4.0.11",
-    "point-of-view": "^0.3.0"
+    "pino-colada": "^1.4.4",
+    "point-of-view": "^1.1.0",
+    "fastify-autoload": "^0.4.0",
+    "fastify-cli": "^0.16.1"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1",
+    "tap": "^12.0.1"
   }
 }

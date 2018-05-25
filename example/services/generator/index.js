@@ -1,6 +1,6 @@
 'use strict'
 
-function generator (fastify, opts, next) {
+async function generator (fastify, opts) {
   fastify.register(require('point-of-view'), {
     engine: {
       handlebars: require('handlebars')
@@ -8,7 +8,9 @@ function generator (fastify, opts, next) {
     templates: __dirname
   })
 
-  fastify.get('/', {
+  fastify.route({
+    method: 'GET',
+    url: '/',
     schema: {
       querystring: {
         type: 'object',
@@ -17,12 +19,12 @@ function generator (fastify, opts, next) {
         },
         required: ['text']
       }
+    },
+    handler: function (req, reply) {
+      reply.view('/index.html', { text: req.query.text })
     }
-  }, (req, reply) => {
-    reply.view('/index.html', { text: req.query.text })
   })
-
-  next()
 }
 
 module.exports = generator
+module.exports.autoPrefix = '/generator'
