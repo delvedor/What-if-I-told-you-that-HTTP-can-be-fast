@@ -17,7 +17,8 @@ import {
   TableHeader,
   TableHeaderItem,
   TableRow,
-  TableItem
+  TableItem,
+  Code
 } from 'spectacle'
 
 // Import code style formatter
@@ -43,9 +44,9 @@ const images = {
   zeroxDemo: require('../assets/0x-demo.gif'),
   autocannon: require('../assets/autocannon.png'),
   autocannonDemo: require('../assets/autocannon-demo.gif'),
-  flamegraphExpress: require('../assets/flamegraph-express.png'),
-  flamegraphNode: require('../assets/flamegraph-node.png'),
-  flamegraphFastify: require('../assets/flamegraph-fastify.png'),
+  flamegraphExpress: require('../assets/flame-express.png'),
+  flamegraphNode: require('../assets/flame-bare.png'),
+  flamegraphFastify: require('../assets/flame-fastify.png'),
   fastifyWhiteHorizontal: require('../assets/fastify-white-landscape.png'),
   fastifyWhiteVertical: require('../assets/fastify-white-portrait.png'),
   nodeExpressFastify: require('../assets/node-expess-fastify.png'),
@@ -68,7 +69,11 @@ const images = {
   thanks: require('../assets/thanks.jpg'),
   fastifyBackground: require('../assets/fastify-background.jpg'),
   radixTree: require('../assets/radix-tree.png'),
-  radixTreeRouter: require('../assets/radix-tree.gif')
+  radixTreeRouter: require('../assets/radix-tree.gif'),
+  clinicUI: require('../assets/clinic-ui.png'),
+  clinic: require('../assets/clinic.png'),
+  doctor: require('../assets/doctor.svg'),
+  flameUI: require('../assets/flame-ui.png')
 }
 
 preloader(images)
@@ -123,19 +128,38 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
+          <Image src={images.clinic} height={600} />
+          <Code bgColor='primary'>{'$ npm i clinic -g'}</Code>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <Heading size={3}>{'Clinic Doctor'}</Heading>
+          <Image src={images.doctor} width={500} />
+          <Text />
+          <Code bgColor='primary'>{'$ clinic doctor -- node server.js'}</Code>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.clinicUI} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <Heading size={3}>{'Clinic Flame'}</Heading>
+          <Image src={images.zerox} width={600} margin='50px 0 50px 0' />
+          <Text />
+          <Code bgColor='primary'>{'$ clinic flame -- node server.js'}</Code>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
+          <ImageSlide image={images.flameUI} />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor='primary'>
           <Image src={images.autocannon} width={1000} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
           <ImageSlide image={images.autocannonDemo} />
-        </Slide>
-
-        <Slide transition={['slide']} bgColor='primary'>
-          <Image src={images.zerox} width={1000} />
-        </Slide>
-
-        <Slide transition={['slide']} bgColor='primary'>
-          <ImageSlide image={images.zeroxDemo} />
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
@@ -236,9 +260,9 @@ export default class Presentation extends React.Component {
               </TableRow>
               <TableRow>
                 <TableItem textSize={40} padding={tablePadding}>req/sec</TableItem>
-                <TableItem textSize={40} textColor='red' padding={tablePadding}>22,006</TableItem>
-                <TableItem textSize={40} textColor='red' padding={tablePadding}>20,816</TableItem>
-                <TableItem textSize={40} textColor='green' padding={tablePadding}>34,389</TableItem>
+                <TableItem textSize={40} textColor='red' padding={tablePadding}>22,538</TableItem>
+                <TableItem textSize={40} textColor='red' padding={tablePadding}>20,617</TableItem>
+                <TableItem textSize={40} textColor='green' padding={tablePadding}>35,441</TableItem>
               </TableRow>
             </TableBody>
           </Table>
@@ -392,11 +416,6 @@ export default class Presentation extends React.Component {
               <Link textColor='tertiary' href='https://github.com/mcollina/reusify' target='_blank'>{'mcollina/reusify'}</Link>
             </Text>
           </Appear>
-          <Appear>
-            <Text margin={'40px 0 0 0'}>
-              <Link textColor='tertiary' href='https://github.com/delvedor/fast-iterator' target='_blank'>{'delvedor/fast-iterator'}</Link>
-            </Text>
-          </Appear>
         </Slide>
 
         <Slide transition={['slide']} bgColor='primary'>
@@ -447,11 +466,11 @@ export default class Presentation extends React.Component {
           </Link>
         </Slide>
 
-        <Slide transition={['slide']} bgColor='primary'>
+        {/* <Slide transition={['slide']} bgColor='primary'>
           <Link href='http://www.letzdoitapp.com/' target='_blank' textColor='secondary'>
             <Image src={images.letzdoit} width={700} />
           </Link>
-        </Slide>
+        </Slide> */}
 
         <Slide transition={['slide']} bgColor='primary'>
           <Heading size={3}>{'This presentation'}</Heading>
